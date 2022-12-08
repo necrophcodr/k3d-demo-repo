@@ -33,9 +33,11 @@ spec:
   selector:
     app: redis
   ports:
-  - protocol: TCP
+  - name: redis
+    protocol: TCP
     port: 9443
     targetPort: 9443
-  - protocol: TCP
+  - name: redis-alt
+    protocol: TCP
     port: 8080
     targetPort: http-alt
