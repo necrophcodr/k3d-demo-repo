@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: rabbitmq-cluster
+  name: promail
   namespace: default
   annotations:
-    argocd.argoproj.io/sync-wave: "3"
+    argocd.argoproj.io/sync-wave: "-8"
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/necrophcodr/k3d-demo-repo'
-    path: deployments/demo/rabbitmq-cluster
-    targetRevision: HEAD
+    repoURL: 'https://grafana.github.io/helm-charts'
+    targetRevision: 6.4.0
+    chart: promtail
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default

@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: loki
+  namespace: default
+  annotations:
+    argocd.argoproj.io/sync-wave: "-9"
+spec:
+  project: default
+  source:
+    repoURL: 'https://grafana.github.io/helm-charts'
+    targetRevision: 1.8.11
+    chart: loki-simple-scalable
+    helm:
+      values: |
+        serviceMonitor:
+          enabled: true
+        prometheusRule:
+          enabled: true
+        write:
+          replicas: 1
+        read:
+          replicas: 1
+        loki:
+          auth_enabled: false
+          commonConfig:
+            replication_factor: 1
+          storage:
+            type: filesystem
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
