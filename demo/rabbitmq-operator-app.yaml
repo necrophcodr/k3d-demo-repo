@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: 'https://github.com/necrophcodr/k3d-demo-repo'
-    path: deployments/demo/rabbitmq
+    path: deployments/demo/rabbitmq-operator
     targetRevision: HEAD
   destination:
     server: 'https://kubernetes.default.svc'
