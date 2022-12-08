@@ -1,0 +1,39 @@
+---
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: redis
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+      - name: redis
+        image: redis:7.0.5-alpine
+        ports:
+        - containerPort: 9443
+        - containerPort: 8080
+          name: http-alt
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+  namespace: default
+spec:
+  selector:
+    app: redis
+  ports:
+  - protocol: TCP
+    port: 9443
+    targetPort: 9443
+  - protocol: TCP
+    port: 8080
+    targetPort: http-alt
