@@ -9,14 +9,13 @@ spec:
   project: default
   source:
     repoURL: 'https://grafana.github.io/helm-charts'
-    targetRevision: 1.8.11
-    chart: loki-simple-scalable
+    targetRevision: 3.6.1
+    chart: loki
     helm:
       values: |
-        serviceMonitor:
-          enabled: true
-        prometheusRule:
-          enabled: true
+        monitor:
+          serviceMonitor:
+            enabled: true
         write:
           replicas: 1
         read:
