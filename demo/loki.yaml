@@ -27,6 +27,16 @@ spec:
             replication_factor: 1
           storage:
             type: filesystem
+
+          schemaConfig:
+            configs:
+              - from: "2022-12-01"
+                store: boltdb-shipper
+                object_store: filesystem
+                schema: v11
+                index:
+                  period: 24h
+                  prefix: loki_index_            
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
