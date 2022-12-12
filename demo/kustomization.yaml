@@ -4,8 +4,7 @@ kind: Kustomization
 resources:
 - prometheus-operator.yaml
 - prometheus-cluster.yaml
-- loki.yaml
-- promtail.yaml
+- loki-stack.yaml
 - grafana.yaml
 - rabbitmq-cluster-app.yaml
 - rabbitmq-operator-app.yaml
