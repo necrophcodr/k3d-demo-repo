@@ -22,24 +22,24 @@ spec:
             auth.ldap:
               enabled: true
               allow_sign_up: true            
-          ldap:
-            enabled: true
-            config: |-
-              [[servers]]
-              host = "192.168.57.10"
-              port = 389
-              use_ssl = false
-              search_filter = "(uid=%s)"
-              search_base_dns = ["dc=nixos,dc=org"]
-              group_search_filter = "(&(objectClass=posixGroup)(memberUid=%s))"
-              group_search_filter_user_attribute = "uid"
-              group_search_base_dns = ["dc=nixos,dc=org"]
-              [servers.attributes]
-              email =  "email"
-              [[servers.group_mappings]]
-              group_dn = "cn=admins,ou=Roles,dc=nixos,dc=org"
-              org_role = "Admin"
-              grafana_admin = true            
+        ldap:
+          enabled: true
+          config: |-
+            [[servers]]
+            host = "192.168.57.10"
+            port = 389
+            use_ssl = false
+            search_filter = "(uid=%s)"
+            search_base_dns = ["dc=nixos,dc=org"]
+            group_search_filter = "(&(objectClass=posixGroup)(memberUid=%s))"
+            group_search_filter_user_attribute = "uid"
+            group_search_base_dns = ["dc=nixos,dc=org"]
+            [servers.attributes]
+            email =  "email"
+            [[servers.group_mappings]]
+            group_dn = "cn=admins,ou=Roles,dc=nixos,dc=org"
+            org_role = "Admin"
+            grafana_admin = true            
         datasources:
           datasources.yaml:
             apiVersion: 1
