@@ -18,7 +18,6 @@ spec:
         grafana.ini:
           server:
             domain: grafana.local
-            root_url: "%(protocol)s://%(domain)/"
             auth.ldap:
               enabled: true
               allow_sign_up: true            
